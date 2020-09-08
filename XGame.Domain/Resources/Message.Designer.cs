@@ -61,6 +61,33 @@ namespace XGame.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dados não encontrados..
+        /// </summary>
+        public static string DADOS_NAO_ENCONTRADOS {
+            get {
+                return ResourceManager.GetString("DADOS_NAO_ENCONTRADOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operação realizada com sucesso..
+        /// </summary>
+        public static string OPERACAO_REALIZADA_COM_SUCESSO {
+            get {
+                return ResourceManager.GetString("OPERACAO_REALIZADA_COM_SUCESSO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Só é possível alterar jogador se ele estiver ativo..
+        /// </summary>
+        public static string SO_E_POSSIVEL_ALTERAR_JOGADOR_SE_ESTIVER_ATIVO {
+            get {
+                return ResourceManager.GetString("SO_E_POSSIVEL_ALTERAR_JOGADOR_SE_ESTIVER_ATIVO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} é obrigatório..
         /// </summary>
         public static string X0_E_OBRIGATORIO {

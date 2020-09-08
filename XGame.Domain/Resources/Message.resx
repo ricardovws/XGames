@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DADOS_NAO_ENCONTRADOS" xml:space="preserve">
+    <value>Dados não encontrados.</value>
+  </data>
+  <data name="OPERACAO_REALIZADA_COM_SUCESSO" xml:space="preserve">
+    <value>Operação realizada com sucesso.</value>
+  </data>
+  <data name="SO_E_POSSIVEL_ALTERAR_JOGADOR_SE_ESTIVER_ATIVO" xml:space="preserve">
+    <value>Só é possível alterar jogador se ele estiver ativo.</value>
+  </data>
   <data name="X0_E_OBRIGATORIO" xml:space="preserve">
     <value>{0} é obrigatório.</value>
   </data>

@@ -41,10 +41,43 @@ namespace XGame.Domain.Services
                 return null;
             }
 
-            Guid id = _repositoryJogador.AdicionarJogador(jogador);
+            jogador = _repositoryJogador.AdicionarJogador(jogador);
+            
 
-            return new AdicionarJogadorResponse() { Id = id, Message = "Operação realizada com sucesso." };
+            return (AdicionarJogadorResponse)jogador;
 
+        }
+
+        public AlterarJogadorResponse AlterarJogador(AlterarJogadorRequest request)
+        {
+            if (request == null)
+            {
+                AddNotification("AlterarJogadorRequest", Message.X0_E_OBRIGATORIO.ToFormat("AlterarJogadorRequest"));
+            }
+
+            Jogador jogador = _repositoryJogador.ObterJogadorPorId(request.Id);
+
+            if (jogador == null)
+            {
+                AddNotification("Id", Message.DADOS_NAO_ENCONTRADOS);
+                return null;
+            }
+
+            var nome = new Nome(request.PrimeiroNome, request.UltimoNome);
+            var email = new Email(request.Email);
+
+            jogador.AlterarJogador(nome, email, jogador.Status);
+
+            AddNotifications(jogador);
+
+            if (IsInvalid())
+            {
+                return null;
+            }
+
+            _repositoryJogador.AlterarJogador(jogador);
+
+            return (AlterarJogadorResponse)jogador;
         }
 
         public AutenticarJogadorResponse AutenticarJogador(AutenticarJogadorRequest request)
@@ -54,24 +87,32 @@ namespace XGame.Domain.Services
                 AddNotification("AutenticarJogadorRequest", Message.X0_E_OBRIGATORIO.ToFormat("AutenticarJogadorRequest"));
             }
 
-            var email = new Email("saushuass");
+            var email = new Email(request.Email);
             
-            var jogador = new Jogador(email, "222222");
+            var jogador = new Jogador(email, request.Senha);
 
             AddNotifications(jogador, email);
 
-            if (jogador.IsValid())
+            if (jogador.IsInvalid())
             {
                 return null;
             }
-            
-            var response = _repositoryJogador.AutenticarJogador(jogador.Email.Endereco, jogador.Senha);
-            return response;
+
+            jogador = _repositoryJogador.AutenticarJogador(jogador.Email.Endereco, jogador.Senha);
+
+            //AutenticarJogadorResponse response = new AutenticarJogadorResponse();
+            //response.Email = jogador.Email.Endereco;
+            //response.PrimeiroNome = jogador.Nome.PrimeiroNome;
+            //response.Status = (int)jogador.Status;
+            //return response;
+
+            return (AutenticarJogadorResponse)jogador;
         }
 
-        private bool IsEmail(string email)
+        public IEnumerable<JogadorResponse> ListarJogador()
         {
-            return false;
+            return _repositoryJogador.ListarJogador().ToList().Select(jogador => (JogadorResponse)jogador).ToList();
         }
+
     }
 }
