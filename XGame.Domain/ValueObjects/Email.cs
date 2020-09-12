@@ -1,6 +1,7 @@
 ﻿using prmToolkit.NotificationPattern;
 using prmToolkit.NotificationPattern.Extensions;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,10 @@ namespace XGame.Domain.ValueObjects
 {
     public class Email : Notifiable
     {
+        protected Email()
+        {
+
+        }
         public Email(string endereco)
         {
             Endereco = endereco;

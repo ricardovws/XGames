@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XGame.Domain.Arguments.Base;
 using XGame.Domain.Arguments.Jogador;
 using XGame.Domain.Entities;
 using XGame.Domain.Interfaces.Repositories;
@@ -17,6 +18,10 @@ namespace XGame.Domain.Services
     public class ServiceJogador : Notifiable, IServiceJogador
     {
         private readonly IRepositoryJogador _repositoryJogador;
+
+        public ServiceJogador()
+        {
+        }
 
         public ServiceJogador(IRepositoryJogador repositoryJogador)
         {
@@ -36,12 +41,19 @@ namespace XGame.Domain.Services
 
             var jogador = new Jogador(nome, email, request.Senha);
 
+            AddNotifications(nome, email);
+
+            if (_repositoryJogador.Existe(x => x.Email.Endereco == request.Email))
+            {
+                AddNotification("E-mail", Message.JA_EXISTE_UM_X0_CHAMADO_X1.ToFormat("e-mail", request.Email));
+            }
+            
             if (this.IsInvalid())
             {
                 return null;
             }
 
-            jogador = _repositoryJogador.AdicionarJogador(jogador);
+            jogador = _repositoryJogador.Adicionar(jogador);
             
 
             return (AdicionarJogadorResponse)jogador;
@@ -55,7 +67,7 @@ namespace XGame.Domain.Services
                 AddNotification("AlterarJogadorRequest", Message.X0_E_OBRIGATORIO.ToFormat("AlterarJogadorRequest"));
             }
 
-            Jogador jogador = _repositoryJogador.ObterJogadorPorId(request.Id);
+            Jogador jogador = _repositoryJogador.ObterPorId(request.Id);
 
             if (jogador == null)
             {
@@ -75,7 +87,7 @@ namespace XGame.Domain.Services
                 return null;
             }
 
-            _repositoryJogador.AlterarJogador(jogador);
+            _repositoryJogador.Editar(jogador);
 
             return (AlterarJogadorResponse)jogador;
         }
@@ -98,7 +110,7 @@ namespace XGame.Domain.Services
                 return null;
             }
 
-            jogador = _repositoryJogador.AutenticarJogador(jogador.Email.Endereco, jogador.Senha);
+            jogador = _repositoryJogador.ObterPor(x => x.Email.Endereco == jogador.Email.Endereco && x.Senha == jogador.Senha);
 
             //AutenticarJogadorResponse response = new AutenticarJogadorResponse();
             //response.Email = jogador.Email.Endereco;
@@ -111,7 +123,23 @@ namespace XGame.Domain.Services
 
         public IEnumerable<JogadorResponse> ListarJogador()
         {
-            return _repositoryJogador.ListarJogador().ToList().Select(jogador => (JogadorResponse)jogador).ToList();
+            return _repositoryJogador.Listar().Select(jogador => (JogadorResponse)jogador).ToList();
+
+        }
+
+        public ResponseBase ExcluirJogador(Guid id)
+        {
+            Jogador jogador = _repositoryJogador.ObterPorId(id);
+
+            if (jogador == null)
+            {
+                AddNotification("Id", Message.DADOS_NAO_ENCONTRADOS);
+                return null;
+            }
+
+            _repositoryJogador.Remover(jogador);
+
+            return new ResponseBase();
         }
 
     }

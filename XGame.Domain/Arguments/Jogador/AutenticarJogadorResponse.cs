@@ -1,7 +1,10 @@
-﻿namespace XGame.Domain.Arguments.Jogador
+﻿using System;
+
+namespace XGame.Domain.Arguments.Jogador
 {
     public class AutenticarJogadorResponse
     {
+        public Guid Id { get; set; }
         public string PrimeiroNome { get; set; }
         public string Email { get; set; }
 
@@ -11,6 +14,7 @@
         {
             return new AutenticarJogadorResponse()
             {
+                Id = entidade.Id,
                 Email = entidade.Email.Endereco,
                 PrimeiroNome = entidade.Nome.PrimeiroNome,
                 Status = (int)entidade.Status

@@ -1,0 +1,17 @@
+D:\MyData\XGames\XGame.Domain\bin\Debug\XGame.Domain.dll
+D:\MyData\XGames\XGame.Domain\bin\Debug\XGame.Domain.pdb
+D:\MyData\XGames\XGame.Domain\bin\Debug\prmToolkit.NotificationPattern.dll
+D:\MyData\XGames\XGame.Domain\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\MyData\XGames\XGame.Domain\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.csprojAssemblyReference.cache
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.Resources.Message.resources
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.csproj.GenerateResource.cache
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.csproj.CoreCompileInputs.cache
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.csproj.CopyComplete
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.dll
+D:\MyData\XGames\XGame.Domain\obj\Debug\XGame.Domain.pdb
+D:\MyData\XGames\XGame.Domain\bin\Debug\XGame.Domain.dll.config
+D:\MyData\XGames\XGame.Domain\bin\Debug\EntityFramework.dll
+D:\MyData\XGames\XGame.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyData\XGames\XGame.Domain\bin\Debug\EntityFramework.xml
+D:\MyData\XGames\XGame.Domain\bin\Debug\EntityFramework.SqlServer.xml

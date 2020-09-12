@@ -120,6 +120,12 @@
   <data name="DADOS_NAO_ENCONTRADOS" xml:space="preserve">
     <value>Dados não encontrados.</value>
   </data>
+  <data name="JA_EXISTE_UM_X0_CHAMADO_X1" xml:space="preserve">
+    <value>Já existe um {0} chamado {1}</value>
+  </data>
+  <data name="OBJETO_X0_E_OBRIGATORIO" xml:space="preserve">
+    <value>Objeto {0} é obrigatório.</value>
+  </data>
   <data name="OPERACAO_REALIZADA_COM_SUCESSO" xml:space="preserve">
     <value>Operação realizada com sucesso.</value>
   </data>
@@ -136,9 +142,9 @@
     <value>{0} inválido.</value>
   </data>
   <data name="X0_OBRIGATORIA_E_DEVE_CONTER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
-    <value>{0} é obrigatória e deve conter entre X1 e X2 caracteres.</value>
+    <value>{0} é obrigatória e deve conter entre {1} e {2} caracteres.</value>
   </data>
   <data name="X0_OBRIGATORIO_E_DEVE_CONTER_ENTRE_X1_E_X2_CARACTERES" xml:space="preserve">
-    <value>{0} é obrigatório e deve conter entre X1 e X2 caracteres.</value>
+    <value>{0} é obrigatório e deve conter entre {1} e {2} caracteres.</value>
   </data>
 </root>
